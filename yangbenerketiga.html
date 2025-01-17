@@ -323,17 +323,18 @@
 <canvas id="canvas" style="display: none;"></canvas>
 
 <script>
-
     // Firebase Configuration
     const firebaseConfig = {
         apiKey: "AIzaSyAGN23wxkqKmLTf4ehAvH7vbfvS2xyeR4c",
         authDomain: "dating-app-project-70040.firebaseapp.com",
+        databaseURL: "https://dating-app-project-70040-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "dating-app-project-70040",
-        storageBucket: "dating-app-project-70040.firebasestorage.app",
+        storageBucket: "dating-app-project-70040.appspot.com",
         messagingSenderId: "898426993647",
         appId: "1:898426993647:web:871f5abf3cc8304843d41a",
         measurementId: "G-T003BVBD24"
     };
+
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
@@ -423,23 +424,6 @@
 
     function chooseActivity(activity) {
         nextSection(`activity-${activity}`);
-    }
-
-    function saveAnswer(inputId) {
-        let answer = document.getElementById(`input-${inputId}`).value;
-        console.log(`${inputId} Answer:`, answer);
-        nextSection('c');
-    }
-
-    function saveDate() {
-        const dateInput = document.getElementById('date-input');
-        const selectedDate = dateInput.value;
-        if (selectedDate) {
-            console.log("Selected Date:", selectedDate);
-            goToAnimation();
-        } else {
-            alert("Silakan pilih tanggal kencan terlebih dahulu!");
-        }
     }
 
     function goToAnimation() {
