@@ -121,13 +121,13 @@
         }
     </style>
 
-    <!-- Firebase Libraries -->
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
-
 </head>
 <body>
-
+    
+    <!-- Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
 
 <audio autoplay loop>
     <source src="audio/background-music.mp3" type="audio/mpeg">
@@ -324,7 +324,7 @@
 
 <script>
     // Firebase Configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    };
     const firebaseConfig = {
         apiKey: "AIzaSyAGN23wxkqKmLTf4ehAvH7vbfvS2xyeR4c",
         authDomain: "dating-app-project-70040.firebaseapp.com",
@@ -332,12 +332,12 @@
         projectId: "dating-app-project-70040",
         storageBucket: "dating-app-project-70040.firebasestorage.app",
         messagingSenderId: "898426993647",
-        appId: "1:898426993647:web:871f5abf3cc8304843d41a",
-        measurementId: "G-T003BVBD24"
+        appId: "1:898426993647:web:12e869715d38686443d41a",
+        measurementId: "G-NP384Y7NML"
     };
 
-    // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.analytics();
     const database = firebase.database();
 
     // Simpan Jawaban
