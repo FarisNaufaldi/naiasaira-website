@@ -419,8 +419,14 @@ function saveDate() {
     img.onerror = () => console.error("Gambar kursor tidak ditemukan!");
 
     function nextSection(sectionId) {
+        console.log(`Navigating to section: ${sectionId}`);
         document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
+        const nextSec = document.getElementById(sectionId);
+        if (nextSec) {
+            nextSec.classList.add('active');
+        } else {
+            console.error(`Section with ID "${sectionId}" not found!`);
+        }
     }
 
     function backToIntro() {
