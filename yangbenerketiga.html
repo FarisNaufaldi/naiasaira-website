@@ -359,38 +359,45 @@
     }
 
      // Simpan jawaban ke Firestore
-     function saveAnswer(inputId) {
-    let answer = document.getElementById(`input-${inputId}`).value;
-    if (answer.trim() !== "") {
-        const data = {
-            type: "activity",
-            answer: answer,
-            user: name || "anonymous",
-            timestamp: new Date().toISOString()
-        };
-        saveToFirebase(data); // Simpan ke Firebase
-        nextSection('c'); // Pindah ke section berikutnya
-    } else {
-        alert("Harap isi jawabannya terlebih dahulu!");
-    }
-}
+    function saveAnswer(inputId) {
+        const answerInput = document.getElementById(`input-${inputId}`);
+        const answer = answerInput ? answerInput.value.trim() : null;
 
-function saveDate() {
-    const dateInput = document.getElementById('date-input');
-    const selectedDate = dateInput.value;
-    if (selectedDate) {
-        const data = {
-            type: "date",
-            selectedDate: selectedDate,
-            user: name || "anonymous",
-            timestamp: new Date().toISOString()
-        };
-        saveToFirebase(data); // Simpan ke Firebase
-        goToAnimation(); // Pindah ke halaman berikutnya
-    } else {
-        alert("Silakan pilih tanggal kencan terlebih dahulu!");
+        if (answer) {
+            const data = {
+                type: "activity",
+                answer: answer,
+                user: name || "anonymous",
+                timestamp: new Date().toISOString(),
+            };
+            console.log("Saving answer:", data); // Debugging
+            saveToFirebase(data);
+            nextSection("c");
+        } else {
+            alert("Harap isi jawabannya terlebih dahulu!");
+        }
     }
-}   
+
+
+    function saveDate() {
+        const dateInput = document.getElementById('date-input');
+        const selectedDate = dateInput ? dateInput.value : null;
+
+        if (selectedDate) {
+            const data = {
+                type: "date",
+                selectedDate: selectedDate,
+                user: name || "anonymous",
+                timestamp: new Date().toISOString(),
+            };
+            console.log("Saving date:", data); // Debugging
+            saveToFirebase(data);
+            goToAnimation();
+        } else {
+            alert("Silakan pilih tanggal terlebih dahulu!");
+        }
+    }
+
 </script>
 
 <script>
