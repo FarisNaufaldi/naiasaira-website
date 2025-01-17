@@ -343,8 +343,15 @@
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
 
+    // Debugging logs
+    console.log('Firebase Config:', firebaseConfig);
+    console.log('App Initialized:', app);
+    console.log('Database Instance:', database);
+
     // Save data to Firebase Realtime Database
     function saveToFirebase(data) {
+        console.log('Data to save:', data); // Debugging: Log the data before saving
+
         const timestamp = Date.now(); // Use timestamp as unique key
         set(ref(database, 'responses/' + timestamp), data)
             .then(() => console.log('Data successfully saved:', data))
