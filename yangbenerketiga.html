@@ -1,3 +1,5 @@
+di realtime database masih null, padahal saya sudah memasukkan extension dan memasukkan rules yg anda sarankan sebelumnya, apakah ada kesalahan di kodingan ini?
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,22 +344,15 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
-    
-    // Debugging logs
-    console.log('Firebase Config:', firebaseConfig);
-    console.log('App Initialized:', app);
-    console.log('Database Instance:', database);
-    
+
     // Save data to Firebase Realtime Database
     function saveToFirebase(data) {
-        console.log('Data to save:', data);
-
         const timestamp = Date.now(); // Use timestamp as unique key
         set(ref(database, 'responses/' + timestamp), data)
             .then(() => console.log('Data successfully saved:', data))
             .catch(error => console.error('Error saving data:', error));
     }
-    
+
      // Simpan jawaban ke Firestore
      function saveAnswer(inputId) {
     let answer = document.getElementById(`input-${inputId}`).value;
@@ -419,14 +414,8 @@ function saveDate() {
     img.onerror = () => console.error("Gambar kursor tidak ditemukan!");
 
     function nextSection(sectionId) {
-        console.log(`Navigating to section: ${sectionId}`);
         document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-        const nextSec = document.getElementById(sectionId);
-        if (nextSec) {
-            nextSec.classList.add('active');
-        } else {
-            console.error(`Section with ID "${sectionId}" not found!`);
-        }
+        document.getElementById(sectionId).classList.add('active');
     }
 
     function backToIntro() {
