@@ -342,15 +342,22 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
-
+    
+    // Debugging logs
+    console.log('Firebase Config:', firebaseConfig);
+    console.log('App Initialized:', app);
+    console.log('Database Instance:', database);
+    
     // Save data to Firebase Realtime Database
     function saveToFirebase(data) {
+        console.log('Data to save:', data);
+
         const timestamp = Date.now(); // Use timestamp as unique key
         set(ref(database, 'responses/' + timestamp), data)
             .then(() => console.log('Data successfully saved:', data))
             .catch(error => console.error('Error saving data:', error));
     }
-
+    
      // Simpan jawaban ke Firestore
      function saveAnswer(inputId) {
     let answer = document.getElementById(`input-${inputId}`).value;
