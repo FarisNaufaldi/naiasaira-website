@@ -120,11 +120,11 @@
             text-align: center;
         }
     </style>
+</head>
 
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
-    
-</head>
+
 <body>
 
 
@@ -180,7 +180,7 @@
         <h2>You liked playing games? Hahahaha kamu milih ini antara gabut atau salah pilih ya</h2>
         <p>Jadi kamu lebih pilih yang mana nich antara ketiga pilihan ini?</p>
         <div class="options">
-            <div class="option" onclick="playClickSound(); nextSection('c')">
+            <div class="option" onclick="playClickSound(); nextSection('c') ; saveOption('Aktivitas yang dipilih pada bagian games', 'Timezone / Amazon')">
                 <p>Timezone / Amazon</p>
                 <img src="images/timezone-placeholder.png" alt="Timezone">
             </div>
@@ -188,7 +188,7 @@
                 <p>Rental PS</p>
                 <img src="images/ps-placeholder.png" alt="Rental PS">
             </div>
-            <div class="option" onclick="playClickSound(); nextSection('a')">
+            <div class="option" onclick="playClickSound(); nextSection('Rekomendasi Tempat')">
                 <p>Go to Cafe and Played Games Together</p>
                 <img src="images/cafe-placeholder.png" alt="Cafe">
             </div>
@@ -201,8 +201,8 @@
     <div class="content-box">
         <h2>Luar biasa ya, Jadinya mau yang di daerah mana nih?</h2>
         <p>Kamu lebih nyaman di daerah mana ? Jujur aja ya</p>
-        <button onclick="playClickSound(); nextSection('c')">Veteran</button>
-        <button onclick="playClickSound(); nextSection('c')">Kayutangi</button>
+        <button onclick="playClickSound(); saveOption('Lokasi Rental Ps yang dipilih :', 'Veteran') ; nextSection('c')">Veteran</button>
+        <button onclick="playClickSound(); saveOption('Lokasi Rental Ps yang dipilih', 'Kayutangi') ; nextSection('c')">Kayutangi</button>
         <button onclick="playClickSound(); backToPrevious('activity-games')">Back</button>
     </div>  
 </div>
@@ -211,11 +211,11 @@
     <div class="content-box">
         <h2>Saya ucapkan terlebih dahulu, saya tidak ada maksud apapun dengan membuat opsi ini, dikarenakan saya menghargai setiap hal yang mungkin saja kamu suka :) nah buat nonton kamu lebih comfy di tempat yang mana diantara kedua ini ? </h2>
         <div class="options">
-            <div class="option" onclick="playClickSound(); nextSection('movie-options')">
+            <div class="option" onclick="playClickSound(); saveOption('Lokasi Bioskop yang dipilih :', 'KCM'); nextSection('movie-options')">
                 <p>KCM</p>
                 <img src="images/KCM-placeholder.png" alt="KCM">
             </div>
-            <div class="option" onclick="playClickSound(); nextSection('movie-options')">
+            <div class="option" onclick="playClickSound(); saveOption('Lokasi Bioskop Ps yang dipilih :', 'XXI'); nextSection('movie-options')">
                 <p>XXI</p>
                 <img src="images/XXI-placeholder.png" alt="XXI">
             </div>
@@ -228,23 +228,23 @@
     <div class="content-box">
         <h2>Pilihannya 5 aja ya, soalnya kebanyakan banget</h2>
         <div class="options">
-            <div class="option" onclick="playClickSound(); nextSection('c')">
+            <div class="option" onclick="playClickSound(); saveOption('Film yang dipilih :', 'A'); nextSection('c')">
                 <p>Film A</p>
                 <img src="images/Film A-placeholder.png" alt="Film A">
             </div>
-            <div class="option" onclick="playClickSound(); nextSection('c')">
+            <div class="option" onclick="playClickSound(); saveOption('Film yang dipilih :', 'B'); nextSection('c')">
                 <p>Film B</p>
                 <img src="images/Film B-placeholder.png" alt="Film B">
             </div>
-            <div class="option" onclick="playClickSound(); nextSection('c')">
+            <div class="option" onclick="playClickSound(); saveOption('Film yang dipilih :', 'C'); nextSection('c')">
                 <p>Film C</p>
                 <img src="images/Film C-placeholder.png" alt="Film C">
             </div>
-            <div class="option" onclick="playClickSound(); nextSection('c')">
+            <div class="option" onclick="playClickSound(); saveOption('Film yang dipilih :', 'D'); nextSection('c')">
                 <p>Film D</p>
                 <img src="images/Film D-placeholder.png" alt="Film D">
             </div>
-            <div class="option" onclick="playClickSound(); nextSection('c')">
+            <div class="option" onclick="playClickSound(); saveOption('Film yang dipilih :', 'E'); nextSection('c')">
                 <p>Film E</p>
                 <img src="images/Film E-placeholder.png" alt="Film E">
             </div>
@@ -257,11 +257,11 @@
     <div class="content-box">
         <h2>Asik i liked to hangout too, (aku suka deeptalk bgt tau, but kalau kamu tipe orang yang susah terbuka it's okay i will listen to anything you said) btw dari dua pilihan ini kamu lebih pilih yang mana ?</h2>
         <div class="options">
-            <div class="option" onclick="playClickSound(); nextSection('b')">
+            <div class="option" onclick="playClickSound(); saveOption('Lokasi Tempat yang dipilih :', 'Mall'); nextSection('Rekomendasi Tempat di Mall')">
                 <p>Ke Mall</p>
                 <img src="images/Ke Mall-placeholder.png" alt="Ke Mall">
             </div>
-            <div class="option" onclick="playClickSound(); nextSection('a')">
+            <div class="option" onclick="playClickSound();saveOption('Lokasi Tempat yang dipilih :', 'Cafe'); nextSection('Rekomendasi Tempat')">
                 <p>Ke Cafe</p>
                 <img src="images/Ke Cafes-placeholder.png" alt="Ke Cafe">
             </div>
@@ -274,26 +274,25 @@
     <div class="content-box">
         <h2>Suka belajar ya? keren banget sih! karena tempat belajar yang paling enak di cafe jadi di cafe aja ya wkwkwkw</h2>
         <p>Bingung juga sih pilih tempat dimana ya ?</p>
-        <button onclick="playClickSound(); nextSection('a')">Next</button>
+        <button onclick="playClickSound(); nextSection('Rekomendasi Tempat')">Next</button>
         <button onclick="playClickSound(); backToQuestion()">Back</button>
     </div>
 </div>
 
-<div id="a" class="section">
+<div id="Rekomendasi Tempat" class="section">
     <div class="content-box">
         <h2>Hmmm Cafe ya, punya rekomendasi tempat? (bebas dimana aja sih asal bareng kamu)</h2>
-        <input type="text" id="input-a" placeholder="Tuliskan rekomendasi kamu di sini">
-        <button onclick="playClickSound(); saveAnswer('a')">Next</button>
+        <input type="text" id="input-Rekomendasi Tempat" placeholder="Tuliskan rekomendasi kamu di sini">
+        <button onclick="playClickSound(); saveAnswer('Rekomendasi Tempat')">Next</button>
         <button onclick="playClickSound(); backToPrevious('activity-games')">Back</button>
     </div>
 </div>
 
-
-<div id="b" class="section">
+<div id="Rekomendasi Tempat di Mall" class="section">
     <div class="content-box">
         <h2>Punya rekomendasi tempat untuk spend time di sini? as long as i'm with u kemana aja gas</h2>
-        <input type="text" id="input-b" placeholder="Tuliskan rekomendasi kamu di sini">
-        <button onclick="playClickSound(); saveAnswer('b')">Next</button>
+        <input type="text" id="input-Rekomendasi Tempat di Mall" placeholder="Tuliskan rekomendasi kamu di sini">
+        <button onclick="playClickSound(); saveAnswer('Rekomendasi Tempat di Mall')">Next</button>
         <button onclick="playClickSound(); backToPrevious('activity-chill')">Back</button>
     </div>
 </div>
@@ -301,8 +300,8 @@
 <div id="c" class="section">
     <div class="content-box">
         <h2>Pilihan yang menarik, jika begitu nanti berangkatnya mau gimana?</h2>
-        <button onclick="playClickSound(); nextSection('date-selection')">Sama Kamu</button>
-        <button onclick="playClickSound(); nextSection('date-selection')">Sendiri</button>
+        <button onclick="playClickSound(); saveOption('Berangkat nya bersama :', 'Saya'); nextSection('date-selection')">Sama Kamu</button>
+        <button onclick="playClickSound(); saveOption('Berangkatnya bersama :', 'Diri Sendiri'); nextSection('date-selection')">Sendiri</button>
         <button onclick="playClickSound(); backToQuestion()">Back</button>
     </div>
 </div>
@@ -312,8 +311,17 @@
         <h2>Wihh jadinya kamu bisa pas kapan ? (Aku cuma bisa diantara tanggal ini aja ya 15-24 Januari 2025)  jangan lupa klik icon kalender nya ya :)</h2>
     </div>
     <div class="date-picker">
-        <input type="date" id="date-input" min="2025-01-15" max="2025-01-24">
+        <input type="date" id="date-input" min="2025-01-21" max="2025-01-25">
         <button onclick="playClickSound(); saveDate()">Next</button>
+    </div>
+</div>
+
+<div id="review" class="section">
+    <div class="content-box">
+        <h2>Review Pilihan Kamu</h2>
+        <ul id="review-list"></ul>
+        <button onclick="playClickSound();submitAnswers()">Submit</button>
+        <button onclick="playClickSound();backToQuestion()">Edit Jawaban</button>
     </div>
 </div>
 
@@ -321,88 +329,27 @@
 
 <canvas id="canvas" style="display: none;"></canvas>
 
-
-<script type="module">
-    // Import Firebase SDK
-    import { initializeApp } from "firebase/app";
-    import { getDatabase, ref, set } from "firebase/database";
-
-    // Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyDIwH3KH224aqhKSztwdPzGkpjuyec5yHA",
-        authDomain: "naiasaira-5d951.firebaseapp.com",
-        projectId: "naiasaira-5d951",
-        storageBucket: "naiasaira-5d951.firebasestorage.app",
-        messagingSenderId: "85424505087",
-        appId: "1:85424505087:web:6d7332f12efd9b9bc14cca",
-        measurementId: "G-CD95MX68CR",
-        databaseURL: "https://naiasaira-5d951-default-rtdb.asia-southeast1.firebasedatabase.app/"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-
-    // Debugging logs
-    console.log('Firebase Config:', firebaseConfig);
-    console.log('App Initialized:', app);
-    console.log('Database Instance:', database);
-
-    // Save data to Firebase Realtime Database
-    function saveToFirebase(data) {
-        console.log('Data to save:', data); // Debugging: Log the data before saving
-
-        const timestamp = Date.now(); // Use timestamp as unique key
-        set(ref(database, 'responses/' + timestamp), data)
-            .then(() => console.log('Data successfully saved:', data))
-            .catch(error => console.error('Error saving data:', error));
-    }
-
-     // Simpan jawaban ke Firestore
-    function saveAnswer(inputId) {
-        const answerInput = document.getElementById(`input-${inputId}`);
-        const answer = answerInput ? answerInput.value.trim() : null;
-
-        if (answer) {
-            const data = {
-                type: "activity",
-                answer: answer,
-                user: name || "anonymous",
-                timestamp: new Date().toISOString(),
-            };
-            console.log("Saving answer:", data); // Debugging
-            saveToFirebase(data);
-            nextSection("c");
-        } else {
-            alert("Harap isi jawabannya terlebih dahulu!");
-        }
-    }
-
-
-    function saveDate() {
-        const dateInput = document.getElementById('date-input');
-        const selectedDate = dateInput ? dateInput.value : null;
-
-        if (selectedDate) {
-            const data = {
-                type: "date",
-                selectedDate: selectedDate,
-                user: name || "anonymous",
-                timestamp: new Date().toISOString(),
-            };
-            console.log("Saving date:", data); // Debugging
-            saveToFirebase(data);
-            goToAnimation();
-        } else {
-            alert("Silakan pilih tanggal terlebih dahulu!");
-        }
-    }
-
-</script>
-
 <script>
 
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDIwH3KH224aqhKSztwdPzGkpjuyec5yHA",
+    authDomain: "naiasaira-5d951.firebaseapp.com",
+    projectId: "naiasaira-5d951",
+    storageBucket: "naiasaira-5d951.firebasestorage.app",
+    messagingSenderId: "85424505087",
+    appId: "1:85424505087:web:6d7332f12efd9b9bc14cca"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+
     let name = "{nama}";
+
+    // Objek untuk menyimpan pilihan pengguna
+    const userChoices = JSON.parse(localStorage.getItem('userChoices')) || {};
 
     function playClickSound() {
         const clickSound = document.getElementById('click-sound');
@@ -449,8 +396,112 @@
         nextSection('not-interested');
     }
 
+    function saveAnswer(inputId) {
+        const answer = document.getElementById(`input-${inputId}`).value;
+        if (answer) {
+            userChoices[inputId] = answer;
+            console.log(`${inputId} Answer:`, answer);
+            localStorage.setItem('userChoices', JSON.stringify(userChoices));
+            nextSection('c');
+        } else {
+            alert("Silakan isi jawaban terlebih dahulu!");
+        }
+    }
+
     function chooseActivity(activity) {
+        userChoices.activity = activity;
+        console.log("Activity:", activity);
+        localStorage.setItem('userChoices', JSON.stringify(userChoices));
         nextSection(`activity-${activity}`);
+    }
+
+    function saveOption(section, option) {
+        if (!userChoices[section]) {
+            userChoices[section] = {};
+        }
+        userChoices[section].selected = option;
+        console.log(`Section ${section} Choice:`, option);
+        localStorage.setItem('userChoices', JSON.stringify(userChoices));
+        nextSection('c');
+    }
+
+    function backToQuestion() {
+        // Hapus semua data yang tersimpan di localStorage
+        localStorage.removeItem('userChoices');
+    
+        // Reset objek userChoices
+        for (let key in userChoices) {
+            delete userChoices[key];
+        }
+        console.log("All data cleared. Restarting from the beginning.");
+    
+        // Reset ke bagian pertama
+        nextSection('question');
+    }
+
+    function saveDate() {
+        const dateInput = document.getElementById('date-input');
+        const selectedDate = dateInput.value;
+        if (selectedDate) {
+            userChoices.date = selectedDate;
+            console.log("Selected Date:", selectedDate);
+            localStorage.setItem('userChoices', JSON.stringify(userChoices));
+            nextSection('review');
+            populateReview();
+        } else {
+            alert("Silakan pilih tanggal terlebih dahulu!");
+        }
+    }
+
+    function populateReview() {
+        const reviewList = document.getElementById('review-list');
+        reviewList.innerHTML = '';
+
+        Object.entries(userChoices).forEach(([key, value]) => {
+            const listItem = document.createElement('li');
+            if (typeof value === 'object') {
+                listItem.textContent = `${key}: ${JSON.stringify(value)}`;
+            } else {
+                listItem.textContent = `${key}: ${value}`;
+            }
+            reviewList.appendChild(listItem);
+        });
+    }
+
+    function submitAnswers() {
+        // Ambil data dari localStorage
+        const userChoices = JSON.parse(localStorage.getItem('userChoices'));
+
+        if (userChoices && Object.keys(userChoices).length > 0) {
+            console.log("Data yang akan dikirim ke Firestore:", userChoices);
+
+            // Kirim data ke Firestore
+            saveToFirestore("userResponses", userChoices);
+
+            // Redirect atau navigasi ke animasi
+            goToAnimation();
+        } else {
+            alert("Data belum lengkap atau tidak ditemukan!");
+        }
+    }
+
+// Fungsi untuk menyimpan data ke Firestore
+async function saveToFirestore(collectionName, data) {
+    try {
+        const docRef = await db.collection(collectionName).add(data);
+        console.log("Document written with ID: ", docRef.id);
+        alert("Jawaban berhasil dikirim ke database!");
+    } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("Gagal mengirim data. Silakan coba lagi.");
+    }
+}
+
+
+    function submitAnswers() {
+        localStorage.setItem('userChoices', JSON.stringify(userChoices));
+        console.log("Saved to localStorage:", userChoices);
+        goToAnimation();
     }
 
     function goToAnimation() {
@@ -466,8 +517,8 @@
             }, { once: true });
         });
     });
+
 </script>
 
 </body>
 </html>
-
